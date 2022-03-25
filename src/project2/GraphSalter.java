@@ -4,18 +4,24 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
-
+/**
+ * Class to salt CSV plot points
+ */
 public class GraphSalter {
 
 
-	
 	private FileWriter fw;
 	private BufferedWriter bw;
-	
+	/**
+	    * Range to salt values with
+	    */
 	private int saltRange = 0;
 	private ArrayList<String> values = new ArrayList<String>();
 
-	
+	/**
+	 * Constructs new graphSalter object
+	 * @param saltRange range to be randomized in
+	 */
 	public GraphSalter(int saltRange) {
 
 		setSaltRange(saltRange);
@@ -39,16 +45,24 @@ public class GraphSalter {
 	
 
 	}
-	
+	/**
+	 * Getter
+	 * @return saltRange
+	 */
 	public int getSaltRange() {
 		return this.saltRange;
 	}
-	
+	/**
+	 * Setter
+	 * @param desiredSaltRange mutator
+	 */
 	public void setSaltRange(int desiredSaltRange) {
 		this.saltRange = desiredSaltRange;
 	}
 	
-	
+	/**
+	 * Applies random double subtraction addition with 1 significant figure to each CSV Y value
+	 */
 	private void randomize() {
 		double[] temp = new double[values.size()];
 		
@@ -91,7 +105,10 @@ public class GraphSalter {
 	
 	}
 	
-	
+	/**
+	 * Outputs CSV file "SaltedPoints.csv" with updated Y values
+	 * 
+	 */
 	public void saltGraph() {
 		
 		randomize();

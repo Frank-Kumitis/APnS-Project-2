@@ -6,16 +6,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
+/**
+ * Class to average CSV plot points
+ */
 public class GraphSmoother {
-
 
 	private FileWriter fw;
 	private BufferedWriter bw;
+	/**
+	    * (int) range of Y values to smooth
+	    */
 	private int averageRange = 1;
+	/**
+	    * ArrayLists to temporarily store values
+	    */
 	private ArrayList<String> values = new ArrayList<String>();
 	private ArrayList<Double> yValues = new ArrayList<Double>();
-	
+	/**
+	 * Constructs new GraphSmoother object
+	 * @param avgRange range of Y values to smooth
+	 */
 	public GraphSmoother(int avgRange) {
 		
 		this.averageRange = avgRange;
@@ -42,7 +52,9 @@ public class GraphSmoother {
 
 		
 	}
-	
+	/**
+	 * Loads values into ArrayList<Double> and averages using applySmoothing(int) helper method.
+	 */
 	private void smoothY() {
 		int count = 0;
 		
@@ -78,7 +90,12 @@ public class GraphSmoother {
 		}
 	}
 	
-
+	/**
+	 * Helper method to average values, stopping at the top or bottom of values
+	 * @param (int) index designates the index of ArrayList<Double> to average 
+	 * @return averaged double to place into the ArrayList<>
+	 */
+	
 	private double applySmoothing(int index) {
 		
 		int tracker = index;
@@ -124,7 +141,9 @@ public class GraphSmoother {
 		
 		return sum;
 	}
-	
+	/**
+	 * Outputs new CSV file "SmoothedPoints.csv" with smoothed values
+	 */
 	public void smoothGraph() {
 		
 		try {
